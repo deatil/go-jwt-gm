@@ -4,8 +4,8 @@ import (
 	"github.com/deatil/go-cryptobin/gm/sm2"
 )
 
-// ParseECPrivateKeyFromDer parses a PEM encoded Elliptic Curve Private Key Structure
-func ParseECPrivateKeyFromDer(der []byte) (*sm2.PrivateKey, error) {
+// ParseSM2PrivateKeyFromDer parses a PEM encoded PKCS1 or PKCS8 private key
+func ParseSM2PrivateKeyFromDer(der []byte) (*sm2.PrivateKey, error) {
 	var err error
 	var pkey *sm2.PrivateKey
 	if pkey, err = sm2.ParseSM2PrivateKey(der); err != nil {
@@ -17,8 +17,8 @@ func ParseECPrivateKeyFromDer(der []byte) (*sm2.PrivateKey, error) {
 	return pkey, nil
 }
 
-// ParseECPublicKeyFromDer parses a PEM encoded PKCS1 or PKCS8 public key
-func ParseECPublicKeyFromDer(der []byte) (*sm2.PublicKey, error) {
+// ParseSM2PublicKeyFromDer parses a PEM encoded PKCS8 public key
+func ParseSM2PublicKeyFromDer(der []byte) (*sm2.PublicKey, error) {
 	pkey, err := sm2.ParsePublicKey(der)
 	if err != nil {
 		return nil, err
