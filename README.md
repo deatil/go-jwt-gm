@@ -65,6 +65,7 @@ The JWT GM driver library have signing methods:
 
  - `HSM3`: jwt.SigningMethodHSM3
  - `GmSM2`: jwt.SigningMethodGmSM2
+ - `ES256K`: jwt.SigningMethodES256K
 
 
 ### LICENSE
