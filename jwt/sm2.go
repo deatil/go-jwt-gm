@@ -14,6 +14,12 @@ var (
 	SigningMethodGmSM2 = jwt.NewJWT[*sm2.PrivateKey, *sm2.PublicKey](SigningGmSM2, jwt.NewJoseEncoder())
 )
 
+func init() {
+	jwt.RegisterSigningMethod(SigningGmSM2.Alg(), func() any {
+		return SigningGmSM2
+	})
+}
+
 var (
 	ErrSignGmSM2SignLengthInvalid = errors.New("go-jwt: sign length error")
 	ErrSignGmSM2VerifyFail        = errors.New("go-jwt: SignGmSM2 Verify fail")

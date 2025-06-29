@@ -10,3 +10,9 @@ var (
 
 	SigningMethodHSM3 = jwt.NewJWT[[]byte, []byte](SigningHSM3, jwt.NewJoseEncoder())
 )
+
+func init() {
+	jwt.RegisterSigningMethod(SigningHSM3.Alg(), func() any {
+		return SigningHSM3
+	})
+}

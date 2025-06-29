@@ -202,3 +202,41 @@ Du1iWonCJUgSYHxt3uIRDhC/cN3vGgJRCQFnEmjSRjmGkwlRUWxhxgZHfA==
 	}
 
 }
+
+func Test_SigningMethodGmSM2_Parse(t *testing.T) {
+	privateKey, err := sm2.GenerateKey(rand.Reader)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	publicKey := &privateKey.PublicKey
+
+	claims := map[string]string{
+		"aud": "example.com",
+		"sub": "foo",
+	}
+
+	s := SigningMethodGmSM2.New()
+	tokenString, err := s.Sign(claims, privateKey)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	parsed, err := jwt.Parse[*sm2.PrivateKey, *sm2.PublicKey](tokenString, publicKey)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	claims2, err := parsed.GetClaims()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if claims2["aud"].(string) != claims["aud"] {
+		t.Errorf("GetClaims aud got %s, want %s", claims2["aud"].(string), claims["aud"])
+	}
+	if claims2["sub"].(string) != claims["sub"] {
+		t.Errorf("GetClaims sub got %s, want %s", claims2["sub"].(string), claims["iat"])
+	}
+
+}

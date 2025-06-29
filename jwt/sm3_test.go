@@ -3,6 +3,8 @@ package jwt
 import (
 	"fmt"
 	"testing"
+
+	"github.com/deatil/go-jwt/jwt"
 )
 
 func Test_SigningHSM3(t *testing.T) {
@@ -72,6 +74,52 @@ func Test_SigningMethodHSM3(t *testing.T) {
 
 	p := SigningMethodHSM3.New()
 	parsed, err := p.Parse(tokenString, key)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	claims2, err := parsed.GetClaims()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if claims2["aud"].(string) != claims["aud"] {
+		t.Errorf("GetClaims aud got %s, want %s", claims2["aud"].(string), claims["aud"])
+	}
+	if claims2["sub"].(string) != claims["sub"] {
+		t.Errorf("GetClaims sub got %s, want %s", claims2["sub"].(string), claims["iat"])
+	}
+
+}
+
+func Test_SigningMethodHSM3_Parse(t *testing.T) {
+	claims := map[string]string{
+		"aud": "example.com",
+		"sub": "foo",
+	}
+	key := []byte("test-key")
+
+	s := SigningMethodHSM3.New()
+	tokenString, err := s.Sign(claims, key)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if len(tokenString) == 0 {
+		t.Error("Sign got fail")
+	}
+
+	alg := s.Alg()
+	signLength := s.SignLength()
+
+	if alg != "HSM3" {
+		t.Errorf("Alg got %s, want %s", alg, "HSM3")
+	}
+	if signLength != 32 {
+		t.Errorf("SignLength got %d, want %d", signLength, 32)
+	}
+
+	parsed, err := jwt.Parse[[]byte, []byte](tokenString, key)
 	if err != nil {
 		t.Fatal(err)
 	}
