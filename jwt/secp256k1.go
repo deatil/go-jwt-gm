@@ -13,7 +13,7 @@ import (
 var (
 	SigningES256K = NewSignES256K(crypto.SHA256, 32, "ES256K")
 
-	SigningMethodES256K = jwt.NewJWT[*ecdsa.PrivateKey, *ecdsa.PublicKey](SigningES256K, jwt.NewJoseEncoder())
+	SigningMethodES256K = jwt.NewJWT[*ecdsa.PrivateKey, *ecdsa.PublicKey](SigningES256K, jwt.JWTEncoder)
 )
 
 func init() {

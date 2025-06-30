@@ -11,7 +11,7 @@ import (
 var (
 	SigningGmSM2 = NewSignGmSM2(32, "GmSM2")
 
-	SigningMethodGmSM2 = jwt.NewJWT[*sm2.PrivateKey, *sm2.PublicKey](SigningGmSM2, jwt.NewJoseEncoder())
+	SigningMethodGmSM2 = jwt.NewJWT[*sm2.PrivateKey, *sm2.PublicKey](SigningGmSM2, jwt.JWTEncoder)
 )
 
 func init() {

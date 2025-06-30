@@ -4,7 +4,7 @@ go 1.21.0
 
 require (
 	github.com/deatil/go-cryptobin v1.1.1005
-	github.com/deatil/go-jwt v1.0.10007
+	github.com/deatil/go-jwt v1.0.10010
 )
 
 require (
