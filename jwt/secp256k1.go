@@ -65,7 +65,7 @@ func (s *SignES256K) Sign(msg []byte, key *ecdsa.PrivateKey) ([]byte, error) {
 	keyBytes := s.KeySize
 
 	signed := make([]byte, 2*keyBytes)
-	rr.FillBytes(signed[0:keyBytes])
+	rr.FillBytes(signed[:keyBytes])
 	ss.FillBytes(signed[keyBytes:])
 
 	return signed, nil
