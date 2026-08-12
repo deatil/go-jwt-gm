@@ -100,15 +100,12 @@ G4pSti0wNjHwkNMqrDBsHXb2fteNA2J2U0fvMPidfIXNqcyDzWJkWyfDmQ==
 -----END PUBLIC KEY-----
     `
 
-	prikeyBytes, _ := jwt.ParsePEM([]byte(prikey))
-	pubkeyBytes, _ := jwt.ParsePEM([]byte(pubkey))
-
-	privateKey, err := ParseSM2PrivateKeyFromDer(prikeyBytes)
+	privateKey, err := ParseSM2PrivateKeyFromPEM([]byte(prikey))
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	publicKey, err := ParseSM2PublicKeyFromDer(pubkeyBytes)
+	publicKey, err := ParseSM2PublicKeyFromPEM([]byte(pubkey))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -159,15 +156,12 @@ Du1iWonCJUgSYHxt3uIRDhC/cN3vGgJRCQFnEmjSRjmGkwlRUWxhxgZHfA==
 -----END PUBLIC KEY-----
     `
 
-	prikeyBytes, _ := jwt.ParsePEM([]byte(prikey))
-	pubkeyBytes, _ := jwt.ParsePEM([]byte(pubkey))
-
-	privateKey, err := ParseSM2PrivateKeyFromDer(prikeyBytes)
+	privateKey, err := ParseSM2PrivateKeyFromPEM([]byte(prikey))
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	publicKey, err := ParseSM2PublicKeyFromDer(pubkeyBytes)
+	publicKey, err := ParseSM2PublicKeyFromPEM([]byte(pubkey))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -222,7 +216,9 @@ func Test_SigningMethodGmSM2_Parse(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	parsed, err := jwt.Parse[*sm2.PrivateKey, *sm2.PublicKey](tokenString, publicKey)
+	parsed, err := jwt.Parse(tokenString, func(t *jwt.Token) (*sm2.PublicKey, error) {
+		return publicKey, nil
+	})
 	if err != nil {
 		t.Fatal(err)
 	}

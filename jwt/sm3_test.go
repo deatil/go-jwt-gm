@@ -119,7 +119,9 @@ func Test_SigningMethodHSM3_Parse(t *testing.T) {
 		t.Errorf("SignLength got %d, want %d", signLength, 32)
 	}
 
-	parsed, err := jwt.Parse[[]byte, []byte](tokenString, key)
+	parsed, err := jwt.Parse(tokenString, func(t *jwt.Token) ([]byte, error) {
+		return key, nil
+	})
 	if err != nil {
 		t.Fatal(err)
 	}

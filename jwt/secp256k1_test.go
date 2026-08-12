@@ -101,15 +101,12 @@ bMJpq/h8QoZCCfmfx1EjkeZYmkiA4iabEY/384d/ghAsUZA241DTAQ==
 -----END PUBLIC KEY-----
     `
 
-	prikeyBytes, _ := jwt.ParsePEM([]byte(prikey))
-	pubkeyBytes, _ := jwt.ParsePEM([]byte(pubkey))
-
-	privateKey, err := ParseECPrivateKeyFromDer(prikeyBytes)
+	privateKey, err := ParseECPrivateKeyFromPEM([]byte(prikey))
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	publicKey, err := ParseECPublicKeyFromDer(pubkeyBytes)
+	publicKey, err := ParseECPublicKeyFromPEM([]byte(pubkey))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -160,15 +157,12 @@ TVMvKDmmOd3mkMKl0aD3mDyKG5oN4GNT842NVcAJMWorFXE1XdfrMQ==
 -----END PUBLIC KEY-----
     `
 
-	prikeyBytes, _ := jwt.ParsePEM([]byte(prikey))
-	pubkeyBytes, _ := jwt.ParsePEM([]byte(pubkey))
-
-	privateKey, err := ParseECPrivateKeyFromDer(prikeyBytes)
+	privateKey, err := ParseECPrivateKeyFromPEM([]byte(prikey))
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	publicKey, err := ParseECPublicKeyFromDer(pubkeyBytes)
+	publicKey, err := ParseECPublicKeyFromPEM([]byte(pubkey))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -223,7 +217,9 @@ func Test_SigningMethodES256K_Parse(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	parsed, err := jwt.Parse[*ecdsa.PrivateKey, *ecdsa.PublicKey](tokenString, publicKey)
+	parsed, err := jwt.Parse(tokenString, func(t *jwt.Token) (*ecdsa.PublicKey, error) {
+		return publicKey, nil
+	})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -259,15 +255,12 @@ tHe7N+sULV2Eth6AxEXQfd+E4nuceR21UNCvQKqxiYwCzVwIKcHe/A==
 -----END PUBLIC KEY-----
     `
 
-	prikeyBytes, _ := jwt.ParsePEM([]byte(prikey))
-	pubkeyBytes, _ := jwt.ParsePEM([]byte(pubkey))
-
-	privateKey, err := ParseECPrivateKeyFromDer(prikeyBytes)
+	privateKey, err := ParseECPrivateKeyFromPEM([]byte(prikey))
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	publicKey, err := ParseECPublicKeyFromDer(pubkeyBytes)
+	publicKey, err := ParseECPublicKeyFromPEM([]byte(pubkey))
 	if err != nil {
 		t.Fatal(err)
 	}

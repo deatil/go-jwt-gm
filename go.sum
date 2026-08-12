@@ -1,8 +1,8 @@
-github.com/deatil/go-cryptobin v1.1.1005 h1:mzYXXDUnbTrCnPIeZTvjrnp7Bkbh2G1SlYM2UIWhpHM=
-github.com/deatil/go-cryptobin v1.1.1005/go.mod h1:x+/+SzyfbxliY2y0Fwe+OoLU0DEt9kWs6OMiwghcfJ0=
-github.com/deatil/go-jwt v1.0.10010 h1:0BS1UjIouaGiC74iUs6k8jkvZ2X34cLILRShsJMAf24=
-github.com/deatil/go-jwt v1.0.10010/go.mod h1:khnFByRgG3cp235fAlJn3ozzxowDtw6e4jTWwDVxvQY=
-golang.org/x/crypto v0.31.0 h1:ihbySMvVjLAeSH1IbfcRTkD/iNscyz8rGzjF/E5hV6U=
-golang.org/x/crypto v0.31.0/go.mod h1:kDsLvtWBEx7MV9tJOj9bnXsPbxwJQ6csT/x4KIN4Ssk=
-golang.org/x/sys v0.28.0 h1:Fksou7UEQUWlKvIdsqzJmUmCX3cZuD2+P3XyyzwMhlA=
-golang.org/x/sys v0.28.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+github.com/deatil/go-cryptobin v1.1.1015 h1:yYr73tVZMKL41SAxTZuJQTtedJMEyp5e/M/3iGzuVys=
+github.com/deatil/go-cryptobin v1.1.1015/go.mod h1:VBJc1G04Ds5ru6WceKbuJbyQCpFfg+yYJzXTut41ro4=
+github.com/deatil/go-jwt v1.0.20009 h1:kwjRyFMdUlarLOW542w+MgJ8dLgXfidX301q+8CPKUk=
+github.com/deatil/go-jwt v1.0.20009/go.mod h1:hHZca6fDq5TWi3eaGDuWs5m4WnCmRFVi0uoEwo742Z0=
+golang.org/x/crypto v0.53.0 h1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=
+golang.org/x/crypto v0.53.0/go.mod h1:DNLU434OwVakk9PzuwV8w62mAJpRJL3vsgcfp4Qnsio=
+golang.org/x/sys v0.46.0 h1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=
+golang.org/x/sys v0.46.0/go.mod h1:4GL1E5IUh+htKOUEOaiffhrAeqysfVGipDYzABqnCmw=
