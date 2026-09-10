@@ -20,6 +20,7 @@ package main
 
 import (
     "fmt"
+	"crypto/rand"
 
     "github.com/deatil/go-jwt-gm/jwt"
 )
@@ -32,13 +33,15 @@ func main() {
     key := []byte("test-key")
 
     s := jwt.SigningMethodHSM3.New()
-    tokenString, err := s.Sign(claims, key)
+    tokenString, err := s.Sign(rand.Reader, claims, key)
     if err != nil {
         fmt.Printf("Sign: %s \n", err.Error())
         return
     }
 
     fmt.Printf("Signed: %s \n", tokenString)
+
+    // =============
 
     p := jwt.SigningMethodHSM3.New()
     parsed, err := p.Parse(tokenString, key)

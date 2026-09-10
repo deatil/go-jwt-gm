@@ -31,7 +31,7 @@ func Test_SigningES256K(t *testing.T) {
 
 	publicKey := &privateKey.PublicKey
 
-	signed, err := h.Sign([]byte(msg), privateKey)
+	signed, err := h.Sign(rand.Reader, []byte(msg), privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -61,7 +61,7 @@ func Test_SigningMethodES256K(t *testing.T) {
 	}
 
 	s := SigningMethodES256K.New()
-	tokenString, err := s.Sign(claims, privateKey)
+	tokenString, err := s.Sign(rand.Reader, claims, privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -116,7 +116,7 @@ bMJpq/h8QoZCCfmfx1EjkeZYmkiA4iabEY/384d/ghAsUZA241DTAQ==
 	}
 
 	s := SigningMethodES256K.New()
-	tokenString, err := s.Sign(claims, privateKey)
+	tokenString, err := s.Sign(rand.Reader, claims, privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -172,7 +172,7 @@ TVMvKDmmOd3mkMKl0aD3mDyKG5oN4GNT842NVcAJMWorFXE1XdfrMQ==
 	}
 
 	s := SigningMethodES256K.New()
-	tokenString, err := s.Sign(claims, privateKey)
+	tokenString, err := s.Sign(rand.Reader, claims, privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -212,7 +212,7 @@ func Test_SigningMethodES256K_Parse(t *testing.T) {
 	}
 
 	s := SigningMethodES256K.New()
-	tokenString, err := s.Sign(claims, privateKey)
+	tokenString, err := s.Sign(rand.Reader, claims, privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -270,7 +270,7 @@ tHe7N+sULV2Eth6AxEXQfd+E4nuceR21UNCvQKqxiYwCzVwIKcHe/A==
 	}
 
 	s := SigningMethodES256K.New()
-	tokenString, err := s.Sign(claims, privateKey)
+	tokenString, err := s.Sign(rand.Reader, claims, privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}

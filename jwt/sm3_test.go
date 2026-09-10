@@ -1,6 +1,7 @@
 package jwt
 
 import (
+	"crypto/rand"
 	"fmt"
 	"testing"
 
@@ -24,7 +25,7 @@ func Test_SigningHSM3(t *testing.T) {
 	var key = "test-key"
 	var sign = "513eaa80de964ba335c4e64a9ac952546979e326a08f6a4b51f43daaf618c4f0"
 
-	signed, err := h.Sign([]byte(msg), []byte(key))
+	signed, err := h.Sign(rand.Reader, []byte(msg), []byte(key))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -53,7 +54,7 @@ func Test_SigningMethodHSM3(t *testing.T) {
 	key := []byte("test-key")
 
 	s := SigningMethodHSM3.New()
-	tokenString, err := s.Sign(claims, key)
+	tokenString, err := s.Sign(rand.Reader, claims, key)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -100,7 +101,7 @@ func Test_SigningMethodHSM3_Parse(t *testing.T) {
 	key := []byte("test-key")
 
 	s := SigningMethodHSM3.New()
-	tokenString, err := s.Sign(claims, key)
+	tokenString, err := s.Sign(rand.Reader, claims, key)
 	if err != nil {
 		t.Fatal(err)
 	}

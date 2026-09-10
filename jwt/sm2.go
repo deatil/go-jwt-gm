@@ -1,8 +1,8 @@
 package jwt
 
 import (
-	"crypto/rand"
 	"errors"
+	"io"
 
 	"github.com/deatil/go-cryptobin/gm/sm2"
 	"github.com/deatil/go-jwt/jwt"
@@ -49,8 +49,8 @@ func (s *SignGmSM2) SignLength() int {
 }
 
 // Sign implements token signing for the Signer.
-func (s *SignGmSM2) Sign(msg []byte, key *sm2.PrivateKey) ([]byte, error) {
-	signed, err := sm2.SignBytes(rand.Reader, key, msg, nil)
+func (s *SignGmSM2) Sign(random io.Reader, msg []byte, key *sm2.PrivateKey) ([]byte, error) {
+	signed, err := sm2.SignBytes(random, key, msg, nil)
 	if err != nil {
 		return nil, err
 	}

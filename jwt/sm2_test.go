@@ -30,7 +30,7 @@ func Test_SigningGmSM2(t *testing.T) {
 
 	publicKey := &privateKey.PublicKey
 
-	signed, err := h.Sign([]byte(msg), privateKey)
+	signed, err := h.Sign(rand.Reader, []byte(msg), privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -60,7 +60,7 @@ func Test_SigningMethodGmSM2(t *testing.T) {
 	}
 
 	s := SigningMethodGmSM2.New()
-	tokenString, err := s.Sign(claims, privateKey)
+	tokenString, err := s.Sign(rand.Reader, claims, privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -115,7 +115,7 @@ G4pSti0wNjHwkNMqrDBsHXb2fteNA2J2U0fvMPidfIXNqcyDzWJkWyfDmQ==
 	}
 
 	s := SigningMethodGmSM2.New()
-	tokenString, err := s.Sign(claims, privateKey)
+	tokenString, err := s.Sign(rand.Reader, claims, privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -171,7 +171,7 @@ Du1iWonCJUgSYHxt3uIRDhC/cN3vGgJRCQFnEmjSRjmGkwlRUWxhxgZHfA==
 	}
 
 	s := SigningMethodGmSM2.New()
-	tokenString, err := s.Sign(claims, privateKey)
+	tokenString, err := s.Sign(rand.Reader, claims, privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -211,7 +211,7 @@ func Test_SigningMethodGmSM2_Parse(t *testing.T) {
 	}
 
 	s := SigningMethodGmSM2.New()
-	tokenString, err := s.Sign(claims, privateKey)
+	tokenString, err := s.Sign(rand.Reader, claims, privateKey)
 	if err != nil {
 		t.Fatal(err)
 	}

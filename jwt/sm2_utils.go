@@ -1,8 +1,8 @@
 package jwt
 
 import (
-	"github.com/deatil/go-jwt/jwt"
 	"github.com/deatil/go-cryptobin/gm/sm2"
+	"github.com/deatil/go-jwt/jwt"
 )
 
 // ParseSM2PrivateKeyFromPEM parses a PEM encoded PKCS1 or PKCS8 private key

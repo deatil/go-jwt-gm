@@ -3,9 +3,9 @@ package jwt
 import (
 	"crypto/ecdsa"
 
-	"github.com/deatil/go-jwt/jwt"
 	"github.com/deatil/go-cryptobin/elliptic/secp256k1"
 	pubkey_ecdsa "github.com/deatil/go-cryptobin/pubkey/ecdsa"
+	"github.com/deatil/go-jwt/jwt"
 )
 
 func init() {
