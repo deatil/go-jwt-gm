@@ -1,7 +1,5 @@
 github.com/deatil/go-cryptobin v1.1.1015 h1:yYr73tVZMKL41SAxTZuJQTtedJMEyp5e/M/3iGzuVys=
 github.com/deatil/go-cryptobin v1.1.1015/go.mod h1:VBJc1G04Ds5ru6WceKbuJbyQCpFfg+yYJzXTut41ro4=
-github.com/deatil/go-jwt v1.0.20009 h1:kwjRyFMdUlarLOW542w+MgJ8dLgXfidX301q+8CPKUk=
-github.com/deatil/go-jwt v1.0.20009/go.mod h1:hHZca6fDq5TWi3eaGDuWs5m4WnCmRFVi0uoEwo742Z0=
 github.com/deatil/go-jwt v1.0.30001 h1:0LAMWKZ+oKVZIUDqcqKIxGK7hvPfeO91IvFBW5njbSU=
 github.com/deatil/go-jwt v1.0.30001/go.mod h1:JnRt5/6e8xj3emImICmVmPPy5LnhX3s5oNsex/9sqN8=
 golang.org/x/crypto v0.53.0 h1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=
